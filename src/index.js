@@ -1,16 +1,13 @@
 import "./styles.css";
 
-let a = +prompt("a?", "");
+let age = prompt("나이", "");
 
-switch (a) {
-  case 0:
-    alert("0");
-    break;
-  case 1:
-    alert("1");
-    break;
-  case 2:
-  case 3:
-    alert("2,3");
-    break;
+function checkAge1(age) {
+  age > 18 ? true : confirm("보호자의 동의를 ");
 }
+function checkAge2(age) {
+  return age > 18 || confirm("보호자의 동의를 ");
+}
+
+checkAge1(age);
+checkAge2(age);
