@@ -1,13 +1,16 @@
 import "./styles.css";
 
-let age = prompt("나이", "");
+let x = prompt("x", "");
+let n;
 
-function checkAge1(age) {
-  age > 18 ? true : confirm("보호자의 동의를 ");
-}
-function checkAge2(age) {
-  return age > 18 || confirm("보호자의 동의를 ");
+while (1) {
+  n = prompt("n", "");
+  if (n >= 1) break;
+  alert("자연수를 입력하세요");
 }
 
-checkAge1(age);
-checkAge2(age);
+function pow(x, n) {
+  return x ** n;
+}
+
+alert(pow(x, n));
