@@ -1,16 +1,12 @@
 import "./styles.css";
 
-let x = prompt("x", "");
-let n;
+let ask = (question, yes, no) => {
+  if (confirm(question)) return yes();
+  else return no();
+};
 
-while (1) {
-  n = prompt("n", "");
-  if (n >= 1) break;
-  alert("자연수를 입력하세요");
-}
-
-function pow(x, n) {
-  return x ** n;
-}
-
-alert(pow(x, n));
+ask(
+  "동의하십니까?",
+  () => alert("동의하셨습니다."),
+  () => alert("취소 버튼을 누르셨습니다.")
+);
