@@ -1,18 +1,22 @@
 import "./styles.css";
 
-let schedule = {};
+// 함수 호출 전
+let menu = {
+  width: 200,
+  height: 300,
+  title: "My menu"
+};
 
-alert(isEmpty(schedule)); // true
+multiplyNumeric(menu);
 
-schedule["8:30"] = "get up";
+for (let key in menu) {
+  alert(key + menu[key]);
+}
 
-alert(isEmpty(schedule)); // false
-
-function isEmpty(obj) {
+function multiplyNumeric(obj) {
   for (let key in obj) {
-    //if (key !== undefined) return false;
-    //반복문 실행하다 프로퍼티 하나라도 있으면 그 즉시 false 반환
-    return false;
+    if (typeof obj[key] === "number") {
+      obj[key] *= 2;
+    }
   }
-  return true;
 }
