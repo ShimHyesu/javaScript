@@ -1,12 +1,15 @@
 import "./styles.css";
 
-let ask = (question, yes, no) => {
-  if (confirm(question)) return yes();
-  else return no();
-};
+let user = new Object();
 
-ask(
-  "동의하십니까?",
-  () => alert("동의하셨습니다."),
-  () => alert("취소 버튼을 누르셨습니다.")
-);
+user.name = "John";
+user.surname = "Smith";
+
+user.name = "Pete";
+
+delete user.name;
+
+for (let key in user) {
+  alert(key);
+  alert(user[key]);
+}
