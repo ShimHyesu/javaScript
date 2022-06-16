@@ -1,22 +1,19 @@
 import "./styles.css";
 
-// 함수 호출 전
-let menu = {
-  width: 200,
-  height: 300,
-  title: "My menu"
+let calculator = {
+  read() {
+    this.add1 = prompt("더할 값1", "");
+    this.add2 = prompt("더할 값2", "");
+  },
+  sum() {
+    return +this.add1 + +this.add2;
+  },
+  mul() {
+    return this.add1 * this.add2;
+  }
 };
 
-multiplyNumeric(menu);
+calculator.read();
 
-for (let key in menu) {
-  alert(key + menu[key]);
-}
-
-function multiplyNumeric(obj) {
-  for (let key in obj) {
-    if (typeof obj[key] === "number") {
-      obj[key] *= 2;
-    }
-  }
-}
+alert(calculator.sum());
+alert(calculator.mul());
