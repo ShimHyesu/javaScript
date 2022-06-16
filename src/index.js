@@ -1,20 +1,20 @@
 import "./styles.css";
 
-let ladder = {
-  step: 0,
-  up() {
-    this.step++;
-    return this;
-  },
-  down() {
-    this.step--;
-    return this;
-  },
-  showStep: function () {
-    // 사다리에서 몇 번째 단에 올라와 있는지 보여줌
-    alert(this.step);
-    return this;
-  }
-};
+let calculator = new Calculator();
+calculator.read();
 
-ladder.up().up().showStep();
+alert("Sum=" + calculator.sum());
+alert("Mul=" + calculator.mul());
+
+function Calculator() {
+  this.read = function () {
+    this.data1 = prompt("값1", "0");
+    this.data2 = prompt("값2", "0");
+  };
+  this.sum = function () {
+    return +this.data1 + +this.data2;
+  };
+  this.mul = function () {
+    return this.data1 * this.data2;
+  };
+}
