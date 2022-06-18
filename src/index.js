@@ -1,11 +1,22 @@
 import "./styles.css";
 
-let styles = ["Jazz", "Blues"];
+function sumInput() {
+  let inputArray = [];
 
-styles.push("Rock-n-Roll");
+  while (1) {
+    let input = prompt("입력", "0");
 
-styles[Math.round(styles.length - 1 / 2)] = "Classics";
+    if (!isFinite(+input) || input === "" || input === null) {
+      break;
+    }
+    inputArray.push(+input);
+  }
 
-alert(styles.shift());
+  let sum = 0;
+  for (let num of inputArray) {
+    sum += num;
+  }
+  return sum;
+}
 
-styles.unshift("Rap", "Reggae");
+alert(sumInput());
