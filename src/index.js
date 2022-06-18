@@ -1,17 +1,16 @@
 import "./styles.css";
 
-function readNumber() {
+function random(min, max) {
   while (1) {
-    let input = prompt("입력", "0");
-    if (input === null || input === "") {
-      return null;
-    }
-    if (isFinite(+input)) {
-      return +input;
+    let value = Math.random() * 10;
+    if (value >= min && value < max) {
+      return value;
     } else {
       continue;
     }
   }
 }
 
-alert(readNumber());
+alert(random(1, 5)); // 1.2345623452
+alert(random(1, 5)); // 3.7894332423
+alert(random(1, 5)); // 4.3435234525
