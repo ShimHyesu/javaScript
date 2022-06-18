@@ -1,17 +1,12 @@
 import "./styles.css";
 
-function Accumulator(startingValue) {
-  this.value = startingValue;
+let str = "Hello";
 
-  this.read = function () {
-    this.data = prompt("값 입력", "0");
-    this.value += +this.data;
-  };
-}
+str.test = 5;
 
-let accumulator = new Accumulator(1); // 최초값: 1
+alert(str.test);
 
-accumulator.read(); // 사용자가 입력한 값을 더해줌
-accumulator.read(); // 사용자가 입력한 값을 더해줌
-
-alert(accumulator.value); // 최초값과 사용자가 입력한 모든 값을 더해 출력함
+//str의 프로퍼티에 접근하려 하면 래퍼 객체 만들어짐
+//엄격모드: An error
+//비 엄격 모드: undefined
+//라패 객체에 프로퍼티 test 추가 그런데 래퍼 객체 바로 삭제됨. test 못 찾음
