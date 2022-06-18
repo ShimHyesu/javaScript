@@ -1,12 +1,19 @@
 import "./styles.css";
 
-function randomInteger(min, max) {
-  while (1) {
-    let value = Math.round(Math.random() * 10);
-    if (value >= min && value <= max) return value;
+function ucFirst(str) {
+  if (!str) return str; //빈 문자열일 경우
+
+  /*
+  let newStr = str[0].toUpperCase();
+
+  for (let i = 1; i < str.length; i++) {
+    newStr = newStr + str[i];
   }
+  return newStr;
+  */
+
+  return str[0].toUpperCase() + str.slice(1);
 }
 
-alert(randomInteger(1, 5)); // 1
-alert(randomInteger(1, 5)); // 3
-alert(randomInteger(1, 5)); // 5
+let input = prompt("영문 소문자입력", "john");
+alert(ucFirst(input));
