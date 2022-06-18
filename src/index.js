@@ -1,19 +1,22 @@
 import "./styles.css";
 
-function checkSpam(str) {
+function truncate(str, maxlength) {
   if (!str) return str;
 
-  let lowerStr = str.toLowerCase();
-
   /*
-  if (lowerStr.includes("viagra") || lowerStr.includes("xxx")) return true;
-  else return false;
+  let newStr = str.slice(0, maxlength - 1);
+
+  if (str.length > maxlength) {
+    newStr += "...";
+  }
+
+  return newStr;
   */
-  return lowerStr.includes("viagra") || lowerStr.includes("xxx");
+
+  return str.length > maxlength ? str.slice(0, maxlength - 1) + "..." : str;
 }
 
 let input = prompt("입력", "");
+let length = prompt("길이", "");
 
-alert(checkSpam(input));
-
-//입력 다 소문자로 바꾸고 비교해보기
+alert(truncate(input, length));
