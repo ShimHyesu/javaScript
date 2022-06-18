@@ -1,15 +1,11 @@
 import "./styles.css";
 
-function extractCurrencyValue(str) {
-  if (!str) return str;
+let styles = ["Jazz", "Blues"];
 
-  let index;
-  for (index = 0; index < str.length; index++) {
-    if (isFinite(str[index])) break;
-  }
-  return str.slice(index);
-}
+styles.push("Rock-n-Roll");
 
-let input = prompt("입력", "");
+styles[Math.round(styles.length - 1 / 2)] = "Classics";
 
-alert(extractCurrencyValue(input));
+alert(styles.shift());
+
+styles.unshift("Rap", "Reggae");
