@@ -1,35 +1,25 @@
 import "./styles.css";
 
-let john = { name: "John", surname: "Smith", id: 1 };
-let pete = { name: "Pete", surname: "Hunt", id: 2 };
-let mary = { name: "Mary", surname: "Key", id: 3 };
+function sortByAge(users) {
+  /*
+  users.sort(function (a, b) {
+    if (a.age > b.age) return 1;
+    if (a.age < b.age) return -1;
+    return 0;
+  });
+  */
+  users.sort((a, b) => a.age - b.age);
+}
 
-let users = [john, pete, mary];
+let john = { name: "John", age: 25 };
+let pete = { name: "Pete", age: 30 };
+let mary = { name: "Mary", age: 28 };
 
-/*
-let usersMapped = users.map(function (obj) {
-  let robj = {};
+let arr = [pete, john, mary];
 
-  robj.fullName = obj.name + obj.surname;
-  robj.id = obj.id;
+sortByAge(arr);
 
-  return robj;
-});
-*/
-
-let usersMapped = users.map((user) => ({
-  fullName: `${user.name} ${user.surname}`,
-  id: user.id
-}));
-//화살표 함수 우측 괄호: 객체의 시작임을 인지하기 위해~
-
-/*
-usersMapped = [
-  { fullName: "John Smith", id: 1 },
-  { fullName: "Pete Hunt", id: 2 },
-  { fullName: "Mary Key", id: 3 }
-]
-*/
-
-alert(usersMapped[0].id); // 1
-alert(usersMapped[0].fullName); // John Smith
+// now: [john, mary, pete]
+alert(arr[0].name); // John
+alert(arr[1].name); // Mary
+alert(arr[2].name); // Pete
