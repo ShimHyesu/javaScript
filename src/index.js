@@ -1,13 +1,16 @@
 import "./styles.css";
 
-function filterRange(arr, a, b) {
-  return arr.filter((item) => item >= a && item <= b);
+function filterRangeInPlace(arr, a, b) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] < a || arr[i] > b) {
+      arr.splice(i, 1);
+      i--; //범위 밖의 요소가 연속으로 나왔을 시, 제거
+    }
+  }
 }
 
-let arr = [5, 3, 8, 1];
+let arr = [5, 3, 8, 1, 10, 11, 12];
 
-let filtered = filterRange(arr, 1, 4);
+filterRangeInPlace(arr, 1, 4); // 1과 4 사이에 있지 않은 요소는 모두 제거함
 
-alert(filtered); // 3,1 (조건에 맞는 요소)
-
-alert(arr); // 5,3,8,1 (기존 배열은 변경되지 않았습니다.)
+alert(arr); // [3, 1]
