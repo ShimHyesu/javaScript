@@ -1,25 +1,13 @@
 import "./styles.css";
 
-function camelize(input) {
-  if (!input) return input;
-
-  /*
-  let arr = input.split("-");
-
-  for (let i = 1; i < arr.length; i++) {
-    arr[i] = arr[i][0].toUpperCase() + arr[i].slice(1);
-  }
-
-  return arr.join("");
-  */
-  return input
-    .split("-")
-    .map((word, index) =>
-      index === 0 ? word : word[0].toUpperCase() + word.slice(1)
-    )
-    .join("");
+function filterRange(arr, a, b) {
+  return arr.filter((item) => item >= a && item <= b);
 }
 
-let input = prompt("입력", "");
+let arr = [5, 3, 8, 1];
 
-alert(camelize(input));
+let filtered = filterRange(arr, 1, 4);
+
+alert(filtered); // 3,1 (조건에 맞는 요소)
+
+alert(arr); // 5,3,8,1 (기존 배열은 변경되지 않았습니다.)
