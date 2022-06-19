@@ -1,22 +1,25 @@
 import "./styles.css";
 
-function sumInput() {
-  let inputArray = [];
+function camelize(input) {
+  if (!input) return input;
 
-  while (1) {
-    let input = prompt("입력", "0");
+  /*
+  let arr = input.split("-");
 
-    if (!isFinite(+input) || input === "" || input === null) {
-      break;
-    }
-    inputArray.push(+input);
+  for (let i = 1; i < arr.length; i++) {
+    arr[i] = arr[i][0].toUpperCase() + arr[i].slice(1);
   }
 
-  let sum = 0;
-  for (let num of inputArray) {
-    sum += num;
-  }
-  return sum;
+  return arr.join("");
+  */
+  return input
+    .split("-")
+    .map((word, index) =>
+      index === 0 ? word : word[0].toUpperCase() + word.slice(1)
+    )
+    .join("");
 }
 
-alert(sumInput());
+let input = prompt("입력", "");
+
+alert(camelize(input));
