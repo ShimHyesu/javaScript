@@ -1,12 +1,22 @@
 import "./styles.css";
 
-let arr = [5, 2, 1, -10, 8];
+function copySorted(arr) {
+  /*
+  let cloneArr = [];
 
-// 요소를 내림차순으로 정렬해주는 코드를 여기에 작성해보세요.
-/*
-arr.sort((a, b) => a - b);
-arr.reverse();
-*/
-arr.sort((a, b) => b - a);
+  for (let i = 0; i < arr.length; i++) {
+    cloneArr[i] = arr[i];
+  }
+  cloneArr.sort();
 
-alert(arr); // 8, 5, 2, 1, -10
+  return cloneArr;
+  */
+  return arr.slice().sort();
+}
+
+let arr = ["HTML", "JavaScript", "CSS"];
+
+let sorted = copySorted(arr);
+
+alert(sorted); // CSS, HTML, JavaScript
+alert(arr); // HTML, JavaScript, CSS (no changes)
