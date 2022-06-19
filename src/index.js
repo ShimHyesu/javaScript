@@ -1,22 +1,38 @@
 import "./styles.css";
 
-function copySorted(arr) {
-  /*
-  let cloneArr = [];
+function Calculator() {
+  this.method = {
+    "+": (a, b) => a + b,
+    "-": (a, b) => a - b
+  };
 
-  for (let i = 0; i < arr.length; i++) {
-    cloneArr[i] = arr[i];
-  }
-  cloneArr.sort();
+  this.calculate = function (str) {
+    let arr = str.split(" ");
 
-  return cloneArr;
-  */
-  return arr.slice().sort();
+    /*
+    for (let op in this.method) {
+      if (arr[1] === op) {
+        return this.method[op](+arr[0], +arr[2]);
+      }
+    }
+    */
+    return this.method[arr[1]](+arr[0], +arr[2]);
+    //객체 key는 for 반복문으로 찾을 필요 없음
+  };
+
+  this.addMethod = function (name, func) {
+    this.method[name] = func;
+  };
 }
 
-let arr = ["HTML", "JavaScript", "CSS"];
+let calc = new Calculator();
 
-let sorted = copySorted(arr);
+alert(calc.calculate("3 + 7")); // 10
 
-alert(sorted); // CSS, HTML, JavaScript
-alert(arr); // HTML, JavaScript, CSS (no changes)
+let powerCalc = new Calculator();
+powerCalc.addMethod("*", (a, b) => a * b);
+powerCalc.addMethod("/", (a, b) => a / b);
+powerCalc.addMethod("**", (a, b) => a ** b);
+
+let result = powerCalc.calculate("2 ** 3");
+alert(result); // 8
