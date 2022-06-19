@@ -1,38 +1,11 @@
 import "./styles.css";
 
-function Calculator() {
-  this.method = {
-    "+": (a, b) => a + b,
-    "-": (a, b) => a - b
-  };
+let john = { name: "John", age: 25 };
+let pete = { name: "Pete", age: 30 };
+let mary = { name: "Mary", age: 28 };
 
-  this.calculate = function (str) {
-    let arr = str.split(" ");
+let users = [john, pete, mary];
 
-    /*
-    for (let op in this.method) {
-      if (arr[1] === op) {
-        return this.method[op](+arr[0], +arr[2]);
-      }
-    }
-    */
-    return this.method[arr[1]](+arr[0], +arr[2]);
-    //객체 key는 for 반복문으로 찾을 필요 없음
-  };
+let names = users.map((item) => item.name);
 
-  this.addMethod = function (name, func) {
-    this.method[name] = func;
-  };
-}
-
-let calc = new Calculator();
-
-alert(calc.calculate("3 + 7")); // 10
-
-let powerCalc = new Calculator();
-powerCalc.addMethod("*", (a, b) => a * b);
-powerCalc.addMethod("/", (a, b) => a / b);
-powerCalc.addMethod("**", (a, b) => a ** b);
-
-let result = powerCalc.calculate("2 ** 3");
-alert(result); // 8
+alert(names); // John, Pete, Mary
