@@ -1,37 +1,13 @@
 import "./styles.css";
 
-function shuffle(arr) {
-  let newArr = [];
-  let rand = [];
-  //인덱스를 랜덤으로
-  for (let i = 0; i < arr.length; i++) {
-    rand[i] = Math.round(Math.random() * 10) % arr.length;
-    for (let j = 0; j < i; j++) {
-      if (rand[i] === rand[j]) i--;
-    }
-    newArr[i] = arr[rand[i]];
-  }
-
-  return newArr;
+function getAverageAge(arr) {
+  return arr.reduce((sum, current) => sum + current.age, 0) / arr.length;
 }
 
-// 1, 2, 3으로 만들 수 있는 모든 순열의 빈도를 세줍니다.
-let count = {
-  "123": 0,
-  "132": 0,
-  "213": 0,
-  "231": 0,
-  "321": 0,
-  "312": 0
-};
+let john = { name: "John", age: 25 };
+let pete = { name: "Pete", age: 30 };
+let mary = { name: "Mary", age: 29 };
 
-for (let i = 0; i < 10000; i++) {
-  let array = [1, 2, 3];
-  let newArr = shuffle(array);
-  count[newArr.join("")]++;
-}
+let arr = [john, pete, mary];
 
-// 만들 수 있는 모든 순열의 생성 빈도를 세서 출력해줍니다.
-for (let key in count) {
-  alert(`${key}: ${count[key]}`);
-}
+alert(getAverageAge(arr)); // (25 + 30 + 29) / 3 = 28
