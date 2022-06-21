@@ -1,27 +1,34 @@
 import "./styles.css";
 
-let salaries = {
-  John: 100,
-  Pete: 300,
-  Mary: 250,
-  James: 600
+let head = {
+  glasses: 1
 };
-let salaries_null = {};
 
-function topSalary(obj) {
-  let max = 0;
-  let maxName = null;
+let table = {
+  pen: 3,
+  __proto__: head
+};
 
-  if (Object.keys(obj).length === 0) return null;
+let bed = {
+  sheet: 1,
+  pillow: 2,
+  __proto__: table
+};
 
-  for (let [name, value] of Object.entries(obj)) {
-    if (max < value) {
-      max = value;
-      maxName = name;
-    }
-  }
-  return maxName;
-}
+let pockets = {
+  money: 2000,
+  __proto__: bed
+};
 
-alert(topSalary(salaries_null));
-alert(topSalary(salaries));
+alert(pockets.pen);
+alert(bed.glasses);
+
+//객체에서 프로퍼티 가져오는 것과
+//객체의 프로토타입에서 프로퍼티 가져오는 것 사이 성능적 차이 없음
+console.time("pocket");
+alert(pockets.glasses);
+console.timeEnd("pocket");
+
+console.time("head");
+alert(head.glasses);
+console.timeEnd("head");
