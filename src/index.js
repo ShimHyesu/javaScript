@@ -1,9 +1,27 @@
 import "./styles.css";
 
-let user = { name: "John", years: 30 };
+let salaries = {
+  John: 100,
+  Pete: 300,
+  Mary: 250,
+  James: 600
+};
+let salaries_null = {};
 
-let { name, years: age, isAdmin = false } = user;
+function topSalary(obj) {
+  let max = 0;
+  let maxName = null;
 
-alert(name); // John
-alert(age); // 30
-alert(isAdmin); // false
+  if (Object.keys(obj).length === 0) return null;
+
+  for (let [name, value] of Object.entries(obj)) {
+    if (max < value) {
+      max = value;
+      maxName = name;
+    }
+  }
+  return maxName;
+}
+
+alert(topSalary(salaries_null));
+alert(topSalary(salaries));
