@@ -1,5 +1,20 @@
 import "./styles.css";
 
+// function Dog(name, sound) {
+//   this.type = "개";
+//   this.name = name;
+//   this.sound = sound;
+// }
+// function Cat(name, sound) {
+//   this.type = "고양이";
+//   this.name = name;
+//   this.sound = sound;
+// }
+
+// Dog.prototype.say = function () {
+//   console.log(this.sound);
+// };
+
 function Animal(type, name, sound) {
   this.type = type;
   this.name = name;
@@ -10,20 +25,23 @@ Animal.prototype.say = function () {
   console.log(this.sound);
 };
 
-//어떤 값을 재사용하고 싶을때
-//prototype의 역할: 객체 생성자로 무엇을 만들었을 때
-//그걸로 만든 객체끼리 공유할 수 있는 값이나 함수
-Animal.prototype.sharedValue = 1;
+function Dog(name, sound) {
+  Animal.call(this, "개", name, sound);
+}
+//call(this,param)
+//this: 이 객체 생성자 함수에서의 this
+//param: 상속하는 생성자의 파타미터
 
-const dog = new Animal("개", "멍멍이", "멍멍");
-const cat = new Animal("고양이", "야옹이", "야옹");
+function Cat(name, sound) {
+  Animal.call(this, "고양이", name, sound);
+}
 
-// function say() {
-//   console.log(this.sound);
-// }
-// dog.say = say;
-// cat.say = say;
+//프로토타입 공유
+Dog.prototype = Animal.prototype;
+Cat.prototype = Animal.prototype;
+
+const dog = new Dog("멍멍이", "멍멍");
+const cat = new Cat("야옹이", "야옹");
 
 dog.say();
 cat.say();
-dog.sharedValue;
